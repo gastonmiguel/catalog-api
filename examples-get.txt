@@ -1,0 +1,22 @@
+# 📋 Empresas
+GET http://localhost:8080/api/companies
+GET http://localhost:8080/api/companies/demo
+
+# 📦 Productos
+GET http://localhost:8080/api/products
+GET http://localhost:8080/api/products/demo
+GET http://localhost:8080/api/products/demo/remera-basica-hombre
+
+# 🔍 Filtros de Productos
+GET http://localhost:8080/api/products?category=hombre
+GET http://localhost:8080/api/products?category=mujer
+GET http://localhost:8080/api/products?color=Rojo
+GET http://localhost:8080/api/products?size=M
+
+# 🎯 Filtros Combinados
+GET http://localhost:8080/api/products?category=mujer&color=Verde&size=L
+GET http://localhost:8080/api/products?category=hombre&color=Azul
+GET http://localhost:8080/api/products?color=Rojo&size=XL
+
+# 🚀 Ruta de Prueba
+GET http://localhost:8080/api/test
