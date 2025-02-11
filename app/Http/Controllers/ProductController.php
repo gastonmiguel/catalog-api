@@ -8,9 +8,11 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function index(Request $request)
+    public function companyProducts(Request $request, $company_slug)
     {
-        $query = Product::with(['company', 'category', 'sizes', 'colors', 'images']);
+        $company = Company::where('slug', $company_slug)->firstOrFail();
+
+        $query = $company->products()->with(['category', 'sizes', 'colors', 'images']);
 
         if ($request->has('category')) {
             $query->whereHas('category', function($q) use ($request) {
@@ -31,12 +33,6 @@ class ProductController extends Controller
         }
 
         return response()->json($query->get());
-    }
-
-    public function companyProducts($company_slug)
-    {
-        $company = Company::where('slug', $company_slug)->firstOrFail();
-        return response()->json($company->products()->with(['category', 'sizes', 'colors', 'images'])->get());
     }
 
     public function show($company_slug, $product_slug)

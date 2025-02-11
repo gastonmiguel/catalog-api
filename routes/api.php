@@ -9,9 +9,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/companies', [CompanyController::class, 'index']);
 Route::get('/companies/{slug}', [CompanyController::class, 'show']);
 
-Route::get('/products', [ProductController::class, 'index']);
-Route::get('/products/{company_slug}', [ProductController::class, 'companyProducts']);
-Route::get('/products/{company_slug}/{product_slug}', [ProductController::class, 'show']);
+Route::prefix('/{company_slug}')->group(function () {
+    Route::get('/products', [ProductController::class, 'companyProducts']);
+    Route::get('/products/{product_slug}', [ProductController::class, 'show']);
+});
 
 Route::get('/categories', [CategoryController::class, 'index']);
 Route::get('/categories/{slug}', [CategoryController::class, 'show']);
