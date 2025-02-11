@@ -1,10 +1,13 @@
 <?php
 
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\ColorController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
+Route::get('/colors', [ColorController::class, 'index']);
 
 Route::get('/companies', [CompanyController::class, 'index']);
 Route::get('/companies/{slug}', [CompanyController::class, 'show']);
